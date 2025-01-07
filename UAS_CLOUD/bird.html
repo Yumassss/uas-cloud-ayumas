@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flappy Bird</title>
+  <style>
+    /* Mengatur gaya dasar */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #70c5ce; /* Warna latar belakang */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Gaya untuk canvas */
+    canvas {
+      border: 2px solid #fff;
+      background-color: #4ec0ca;
+    }
+
+    /* Gaya untuk div "playAgain" */
+    #playAgain {
+      display: none; /* Default disembunyikan */
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      background-color: rgba(43, 97, 221, 0.9); /* Latar belakang transparan */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Judul dalam playAgain */
+    #playAgain h2 {
+      margin: 0 0 10px 0;
+      color: red;
+      font-size: 24px;
+    }
+
+    /* Gaya untuk tombol */
+    #playAgain button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #playAgain button:hover {
+      background-color: #ddd;
+    }
+
+    /* Gaya untuk teks skor */
+    #finalScore {
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* Gaya untuk tombol "Back to Menu" */
+    #backToMenu {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff; /* Warna biru */
+      color: white;
+      cursor: pointer;
+    }
+
+    #backToMenu:hover {
+      background-color: #0056b3; /* Warna biru lebih gelap */
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas tempat game berjalan -->
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+  <!-- Tampilan Game Over -->
+  <div id="playAgain">
+    <h2>Game Over!</h2>
+    <p id="finalScore"></p>
+    <button id="playAgainButton">Play Again</button>
+    <button id="backToMenu">Back to Menu</button>
+  </div>
+
+  <!-- Menyertakan file JavaScript -->
+  <script src="bird.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Selector</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #f0e68c;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      font-size: 3em;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn {
+      margin: 15px;
+      padding: 20px 40px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .flappy {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+
+    .fruits {
+      background: linear-gradient(45deg, #56ab2f, #a8e063);
+    }
+
+    .play {
+      background: linear-gradient(45deg, #f7971e, #ffd200);
+    }
+
+    #menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    canvas {
+      border: 4px solid white;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <h1>Which game do you want to play?</h1>
+    <button class="btn flappy" onclick="window.location.href='bird.html'">Flappy Bird</button>
+    <button class="btn fruits" onclick="window.location.href='fruit.html'">Fruits Game</button>
+    <button id="playBtn" class="btn play" style="display: none;" onclick="startGame()">Play</button>
+  </div>
+
+  <canvas id="gameCanvas" width="480" height="640" style="display: none;"></canvas>
+
+  <script>
+    // Reference elements
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const menu = document.getElementById("menu");
+    const playBtn = document.getElementById("playBtn");
+
+    let selectedGame = null;
+
+    function selectGame(game) {
+      selectedGame = game;
+      alert(`You selected ${game === "flappy" ? "Flappy Bird" : "Fruits Game"}!`);
+      playBtn.style.display = "inline-block";
+      playBtn.classList.add("pulse");
+    }
+
+    function startGame() {
+      if (!selectedGame) {
+        alert("Please select a game first!");
+        return;
+      }
+      menu.style.display = "none";
+      canvas.style.display = "block";
+      if (selectedGame === "flappy") {
+        runFlappyBird();
+      } else if (selectedGame === "fruits") {
+        runFruitsGame();
+      }
+    }
+
+    function runFlappyBird() {
+      alert("Flappy Bird game started!");
+    }
+
+    function runFruitsGame() {
+      alert("Fruits game started!");
+    }
+  </script>
+</body>
+</html>
